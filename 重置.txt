@@ -1,0 +1,19 @@
+改my.ini
+
+[mysqld]
+port = 3309
+basedir=*
+datadir=*
+max_connections=200
+character-set-server=utf8
+default-storage-engine=InnoDB
+explicit_defaults_for_timestamp=true
+[client]
+port=3309
+default-character-set=utf8
+
+切到basedir\bin
+mysqld -install MySQL3309
+mysqld --initialize-insecure
+net start MySQL3309
+mysql -u root -p
