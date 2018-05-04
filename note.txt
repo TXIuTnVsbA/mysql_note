@@ -1,4 +1,4 @@
-//显库
+﻿//显库
 show databases;
 
 //用库
@@ -53,3 +53,47 @@ GROUP BY column_name;
 //NNER JOIN（内连接,或等值连接）：获取两个表中字段匹配关系的记录。
 //LEFT JOIN（左连接）：获取左表所有记录，即使右表没有对应匹配的记录。
 //RIGHT JOIN（右连接）： 与 LEFT JOIN 相反，用于获取右表所有记录，即使左表没有对应匹配的记录。
+
+//正则表达式
+SELECT * FROM table_name WHERE * REGEXP '*';
+//^	匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 '\n' 或 '\r' 之后的位置。
+//$	匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 '\n' 或 '\r' 之前的位置。
+//.	匹配除 "\n" 之外的任何单个字符。要匹配包括 '\n' 在内的任何字符，请使用象 '[.\n]' 的模式。
+//[...]	字符集合。匹配所包含的任意一个字符。例如， '[abc]' 可以匹配 "plain" 中的 'a'。
+//[^...]	负值字符集合。匹配未包含的任意字符。例如， '[^abc]' 可以匹配 "plain" 中的'p'。
+//p1|p2|p3	匹配 p1 或 p2 或 p3。例如，'z|food' 能匹配 "z" 或 "food"。'(z|f)ood' 则匹配 "zood" 或 "food"。
+//*	匹配前面的子表达式零次或多次。例如，zo* 能匹配 "z" 以及 "zoo"。* 等价于{0,}。
+//+	匹配前面的子表达式一次或多次。例如，'zo+' 能匹配 "zo" 以及 "zoo"，但不能匹配 "z"。+ 等价于 {1,}。
+//{n}	n 是一个非负整数。匹配确定的 n 次。例如，'o{2}' 不能匹配 "Bob" 中的 'o'，但是能匹配 "food" 中的两个 o。
+//{n,m}	m 和 n 均为非负整数，其中n <= m。最少匹配 n 次且最多匹配 m 次。
+
+//删除字段
+ALTER TABLE 表 DROP 字段;
+
+//添加字段
+ALTER TABLE 表 ADD 段 类型;
+
+//改类型
+ALTER TABLE 表 MODIFY 段 类型;
+ALTER TABLE testalter_tbl CHANGE i j BIGINT;
+
+//
+ALTER TABLE 表 MODIFY 段 类型 NOT NULL DEFAULT 默认值;
+
+//改表名
+ALTER TABLE 旧表 RENAME TO 新表;
+
+//修改存储引擎：修改为myisam
+alter table tableName engine=myisam;
+
+//删除外键约束：keyName是外键别名
+alter table tableName drop foreign key keyName;
+
+//修改字段的相对位置：这里name1为想要修改的字段，type1为该字段原来类型，
+//first和after二选一，这应该显而易见，first放在第一位，after放在name2字段后面
+alter table tableName modify name1 type1 first|after name2;
+
+https://blog.csdn.net/huangjin0507/article/details/49421427
+http://www.runoob.com/mysql/
+
+
